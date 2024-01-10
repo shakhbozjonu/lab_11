@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                // Firebase authentication logic
+                // firebase logic
                 try {
                   UserCredential userCredential =
                       await FirebaseAuth.instance.signInAnonymously();
@@ -108,7 +108,7 @@ class RegistrationScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                // Firebase registration logic
+                // firebase reg 
                 try {
                   UserCredential userCredential = await FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
@@ -116,7 +116,7 @@ class RegistrationScreen extends StatelessWidget {
                     password: "SuperSecretPassword!",
                   );
 
-                  // Store user information in Firestore
+                  // store user info
                   if (userCredential.user != null) {
                     await FirebaseFirestore.instance
                         .collection('users')
@@ -166,7 +166,7 @@ class MainPage extends StatelessWidget {
               return Text('Error: ${snapshot.error}');
             }
 
-            // Display user email fetched from Firestore
+            // show fetched email
             if (snapshot.hasData && snapshot.data != null) {
               var userData = snapshot.data!;
               return Text('Welcome, ${userData['email']}');
